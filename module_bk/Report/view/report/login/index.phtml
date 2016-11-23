@@ -1,0 +1,75 @@
+<html>
+	<head>
+		
+		<style>
+			
+			#login-box
+			{
+				width: 300px;
+			}
+			
+			
+			.form-group
+			{
+				margin-top: 10px;
+			}
+			
+			input.form-control
+			{
+				width: 100%;
+				padding: 10px 15px;
+				border: 0px;
+				background-color: #ccc;
+				color: #000;
+			}
+			
+			.footer
+			{
+				margin-top: 20px;
+			}
+			
+			.btn-login
+			{
+				border: 0px;
+				background: #ccc;
+				padding: 15px;
+				font-size: 16px;
+				
+			}
+				
+		</style>
+	</head>
+	<body>
+		<div class="container" align="center" style="padding: 150px 50px">
+			<div class="row">
+				<div class="form-box" id="login-box">
+				   
+				    <?php
+				    $form = $this->form;
+				    $form->setAttribute('action', $this->url('report/login'));
+				    $form->prepare();
+				    echo $this->form()->openTag($form);
+				    ?>
+				    <div class="body bg-gray">
+				        <div class="form-group">
+				            <?php echo $this->formRow($form->get('email')); ?>
+				        </div>
+				        <div class="form-group">
+				            <?php echo $this->formRow($form->get('password')); ?>
+				        </div>
+				        <div class="form-group">
+				            <label for="rememberme">
+				                <?php echo $this->formRow($form->get('rememberme')); ?> Remember me
+				            </label>
+				        </div>
+				    </div>
+				    <div class="footer">
+				        <button type="submit" class="btn-login">Login</button>        
+				    </div>
+				    <?php echo $this->form()->closeTag(); ?>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

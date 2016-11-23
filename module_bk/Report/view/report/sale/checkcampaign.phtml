@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Report</h1>
+    </div>               
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+	    <table class="defaultTable">
+		    <tr>
+			    <th>Streak ID</th>
+			    <th>Campaign</th>
+			    <th>Sale</th>
+			    <th>Media</th>
+		    </tr>
+		    <tr>
+			    <td><input onchange='import_columns()' type='text' name='input-filter' id='streakID' class='input-filter' /></td>
+			    <td><input onchange='import_columns()' type='text' name='input-filter' id='name' class='input-filter' /></td>
+			    <td><input onchange='import_columns()' type='text' name='input-filter' id='sale' class='input-filter' /></td>
+			    <td><input onchange='import_columns()' type='text' name='input-filter' id='assigned_to' class='input-filter' /></td>
+		    </tr>
+		    <?php		      
+		      foreach($campaigns as $campaign)
+		      {
+			      ?>
+			      <tr class="row-data">
+				      <td><?php echo $campaign['streakID'] ?></td>
+				      <td><?php echo $campaign['name'] ?></td>
+				      <td><?php echo $campaign['sale'] ?></td>
+				      <td><?php echo $campaign['media'] ?></td>
+			      </tr>
+			      <?php
+		      }
+		      
+		    ?>
+	    </table>
+            
+    </div>               
+</div>
+         
+
+        
+

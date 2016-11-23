@@ -1,0 +1,77 @@
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Add Supplier</h1>
+    </div>               
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <?php
+			$form = $this->form;
+			$form->setAttribute('action', $this->url('report/ketoan', array('action' => 'add-supplier')));
+			$form->prepare();
+			echo $this->form()->openTag($form);
+		?>
+		<div class="body bg-gray">
+			<div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<?php echo $this->formRow($form->get('name')); ?>
+					</div>
+				</div>	
+				<div class="col-md-6">
+					<div class="form-group">
+						<?php echo $this->formRow($form->get('contact_person')); ?>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<?php echo $this->formRow($form->get('phone')); ?>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<?php echo $this->formRow($form->get('email')); ?>
+					</div>
+				</div>								
+				<div class="col-md-12">
+					<div class="form-group" align="center">
+						<button type="submit" class="btn-add btn">Add Supplier</button>
+					</div> 
+				</div>
+				
+			</div>
+		</div>
+	
+		<?php echo $this->form()->closeTag(); ?>
+    </div>               
+</div>
+<div class="row">
+    <div class="col-lg-12">
+	    <table width="100%">
+		    <tr>
+			    <th>Supplier Name</th>
+			    <th>Contact Person</th>
+			    <th>Phone</th>
+			    <th>Email</th>			
+			    <th width="5%"></th>
+		    </tr>
+		    <?php
+			foreach($suppliers as $supplier)
+			{
+				?>
+				<tr>
+		    		<td><?php echo $supplier['name'] ?></td>	
+		    		<td><?php echo $supplier['contact_person'] ?></td>
+		    		<td><?php echo $supplier['phone'] ?></td>
+		    		<td><?php echo $supplier['email'] ?></td>		    	
+		    		<td width="5%"><a href="<?php echo $this->url('report/ketoan', array('action' => 'edit-supplier','id' => $supplier['id'])) ?>">Edit</a></td>	    				    		
+			    </tr>
+				<?php
+			}    
+			?>
+		    
+	    </table>	    
+    </div>               
+</div>
+

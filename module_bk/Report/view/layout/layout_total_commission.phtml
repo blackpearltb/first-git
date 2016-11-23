@@ -1,0 +1,74 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('Streak Log'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))	        
+	        
+	        			->prependStylesheet($this->basePath('css/style.css'))	
+	        			->prependStylesheet($this->basePath('css/x-editable.css'))
+	        			->prependStylesheet($this->basePath('css/dragtable.css'))		
+                        ->prependStylesheet($this->basePath('bower_components/bootstrap/dist/css/bootstrap.min.css'))
+                        ->prependStylesheet($this->basePath('bower_components/metisMenu/dist/metisMenu.min.css')) 
+                        ->prependStylesheet($this->basePath('dist/css/timeline.css'))
+                        ->prependStylesheet($this->basePath('dist/css/sb-admin-2.css'))    
+                        ->prependStylesheet($this->basePath('bower_components/morrisjs/morris.css'))                                             
+                        ->prependStylesheet($this->basePath('bower_components/font-awesome/css/font-awesome.min.css')) 
+                        ->prependStylesheet($this->basePath('css/akottr.css'))
+                        ->prependStylesheet($this->basePath('css/reset.css'))                                               
+                        ?>
+
+       
+       
+
+    </head>
+    <body>
+	    
+	    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Streak Log</a>
+            </div>
+            <?php echo $this->partial('layout/header-user', array()) ?>
+			<?php echo $this->partial('layout/menu', array()) ?>
+        </nav>
+
+        <div id="page-wrapper">
+	        <?php echo $this->content; ?>
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <div class="modal"><!-- Place at bottom of page --></div>
+    <?php echo $this->headScript()	        	        
+            //->prependFile($this->basePath('bower_components/jquery/dist/jquery.min.js'))                                    
+            ->prependFile($this->basePath('bower_components/metisMenu/dist/metisMenu.min.js')) 
+            ->prependFile($this->basePath('dist/js/sb-admin-2.js'))                       
+            ->prependFile($this->basePath('js/ketoan_total_commission.js'))           
+            ->prependFile($this->basePath('js/x-editable.js'))                            
+            ->prependFile($this->basePath('js/jquery.dragtable.js'))  
+            ->prependFile($this->basePath('bower_components/bootstrap/dist/js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-ui.min.js'))
+            ->prependFile($this->basePath('js/jquery.min.js'))       
+                                                         
+        ; ?>
+        <?php echo $this->inlineScript() ?> 		                   
+    </body>
+</html>

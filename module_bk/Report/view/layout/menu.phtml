@@ -1,0 +1,112 @@
+<div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">                       
+                        
+						<?php if($_SESSION['REPORTMEMBER']['type'] == "ketoan"){?>
+						<li>
+                            <a href="<?php echo $this->url('report/ketoan') ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li class="active">
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Kế toán<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse in" aria-expanded="true">
+	                            <li>
+                                    <a href="<?php echo $this->url('report/ketoan', array('action' => 'month')) ?>">Month</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('report/ketoan', array('action' => 'total')) ?>">Total</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('report/ketoan', array('action' => 'total-commission-media')) ?>">Commission Media</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('report/ketoan', array('action' => 'total-commission-sale')) ?>">Commission Sale</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('report/ketoan', array('action' => 'add-collection')) ?>">Add Collection</a>
+                                </li>                                
+                                <li>
+                                    <a href="<?php echo $this->url('report/ketoan', array('action' => 'add')) ?>">Import Log</a>
+                                </li>
+                                 <li>
+                                    <a href="<?php echo $this->url('report/ketoan', array('action' => 'add-customer')) ?>">Add Customer</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('report/ketoan', array('action' => 'add-supplier')) ?>">Add Supplier</a>
+                                </li>
+                                <!--
+                                <li>
+                                    <a href="http://streak.urekamedia.com/report/customers/index.php" target="_blank">Add Customer</a>
+                                </li>
+                                <li>
+                                    <a href="http://streak.urekamedia.com/report/suppliers/index.php" target="_blank">Add Supplier</a>
+                                </li>
+                                -->
+                            </ul>
+                          
+                        </li>                                              
+                        <?php 
+	                      }
+                        ?>                        
+                        <?php if($_SESSION['REPORTMEMBER']['type'] == "media"){?>
+                        <li>
+                            <a href="<?php echo $this->url('report/media') ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Media<span class="fa arrow"></span></a> 
+                            <ul class="nav nav-second-level collapse in" aria-expanded="true">
+	                            <li>
+                                    <a href="<?php echo $this->url('report/media', array('action' => 'month')) ?>">Month</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="<?php echo $this->url('report/media', array('action' => 'total')) ?>">Total</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('report/media', array('action' => 'total-commission-media')) ?>">Commission Media</a>
+                                </li> 
+                                <?php if($_SESSION['REPORTMEMBER']['parent_id'] == 0){?> 
+                                <li>
+                                    <a href="<?php echo $this->url('report/media', array('action' => 'add-media')) ?>">Add Media</a>
+                                </li>
+                                <?php } ?>                              
+                            </ul>                                                     
+                        </li>                                              
+                        <?php 
+	                      }
+                        ?>
+                        
+                        <?php if($_SESSION['REPORTMEMBER']['type'] == "sale"){?>
+                        <li>
+                            <a href="<?php echo $this->url('report/sale') ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Sale<span class="fa arrow"></span></a> 
+                            <ul class="nav nav-second-level collapse in" aria-expanded="true">
+	                            <li>
+                                    <a href="<?php echo $this->url('report/sale', array('action' => 'month')) ?>">Month</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="<?php echo $this->url('report/sale', array('action' => 'total')) ?>">Total</a>
+                                </li> 
+                                
+                                <li>
+                                    <a href="<?php echo $this->url('report/sale', array('action' => 'total-commission-sale')) ?>">Commission Sale</a>
+                                </li> 
+                                <li>
+                                    <a href="<?php echo $this->url('report/sale', array('action' => 'checkcampaign')) ?>">Check Campaign</a>                                    
+                                </li> 
+                                <?php if($_SESSION['REPORTMEMBER']['parent_id'] == 0){?> 
+                                <li>
+                                    <a href="<?php echo $this->url('report/sale', array('action' => 'add-sale')) ?>">Add Sale</a>
+                                </li>
+                                <?php } ?>                              
+                            </ul>                                                     
+                        </li>                                              
+                        <?php 
+	                      }
+                        ?>
+                        
+                    </ul>
+                </div>
+                

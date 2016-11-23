@@ -1,0 +1,14 @@
+ <!-- Scripts -->
+        <?php echo $this->headScript()	        	        
+            //->prependFile($this->basePath('bower_components/jquery/dist/jquery.min.js'))                                    
+            ->prependFile($this->basePath('bower_components/metisMenu/dist/metisMenu.min.js')) 
+            ->prependFile($this->basePath('dist/js/sb-admin-2.js'))                       
+            ->prependFile($this->basePath('js/media_total.js'))           
+            ->prependFile($this->basePath('js/x-editable.js'))                            
+            ->prependFile($this->basePath('js/jquery.dragtable.js'))  
+            ->prependFile($this->basePath('bower_components/bootstrap/dist/js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-ui.min.js'))
+            ->prependFile($this->basePath('js/jquery.min.js'))       
+                                                         
+        ; ?>
+        <?php echo $this->inlineScript() ?>

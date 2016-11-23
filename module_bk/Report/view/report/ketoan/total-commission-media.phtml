@@ -1,0 +1,169 @@
+<?php
+$url_ajax = $this->url(MODULE_NAME, array('action'=>'total-commission-media','controller'=>CONTROLLER_NAME));
+
+$this_month =  date( "Y-m");
+$last_month = date( "Y-m", strtotime( "$this_month - 1 month" ));
+
+
+$month_include_data = array();
+$array_year = array();
+$array_year1 = array();
+
+foreach($months as $data)
+{	
+			
+	$array_data = explode("-", $data['date']);
+	
+	$year = $array_data[0];
+	
+	if(!in_array($year, $array_year))
+	{		
+		$array_year[] = $year;			
+		
+	}
+			
+}
+foreach($array_year as $value)
+{
+	
+	foreach($months as $data)
+	{
+		$array_data = explode("-", $data['date']);
+		
+		$year = $array_data[0];
+		$month = $array_data[1];
+		
+		if($month > 0 && $month < 13)
+		{
+			
+			$temp_month_current =  $value."-".$month;
+			
+				if($year == $value)
+				{
+					
+					
+					if(!in_array($month, $month_include_data[$value]))
+					{	
+													
+						$month_include_data[$value][] = $month;		
+						sort($month_include_data[$value]);
+					}
+					
+					
+				}
+		}
+	}
+}
+
+?>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Comission Media</h1>
+    </div>               
+</div>
+       
+<div class="row">
+	
+	
+	<div class="col-lg-12" style="display: none;">
+		<div class="header-choose-columns">	
+			<span style="font-size: 20px;">User</span>
+			<ul>
+			<?php
+				
+				foreach($medias as $value)
+				{
+					?>
+					<li>
+					<label><input type="radio" name="choose-user" class="choose-user" id="<?php echo $value['email'] ?>" value="<?php echo $value['email'] ?>" />&nbsp;<?php echo $value['email'] ?></label><!--<a href="#" class="email" id="<?php echo $value['email'] ?>"><?php echo $value['email'] ?></a>-->&nbsp;&nbsp;&nbsp;&nbsp;		
+					</li>
+					<?php					
+				}
+			?>
+			</ul>
+			<div style="clear: both"></div>								
+		</div>	
+	</div>
+	<div class="col-lg-12">
+		
+					<?php													
+					foreach ($month_include_data as $key => $value)
+					{						
+						?>						
+						<span style="font-size: 20px;">Năm <?php echo $key ?></span>
+						<br/>
+							<ul class="ul-month">								
+								<?php																	
+								foreach ($value as $key2 => $value2)	
+								{									
+								?>
+								<li class="li-month" style="float:left;padding: 5px;">	
+									<?php
+									if($last_month == $key."-".$value2)
+									{
+									?>
+									<a class="a-filter-date active"  href="#" id="<?php echo $key."-".$value2 ?>">Tháng <?php echo $value2 ?></a>
+									<?php	
+									}
+									else
+									{									
+									?>		
+									<a class="a-filter-date"  href="#" id="<?php echo $key."-".$value2 ?>">Tháng <?php echo $value2 ?></a>
+									<?php
+									}	
+									?>	
+								</li>
+								<?php
+									
+								}	
+								?>								
+							</ul>
+																								
+							<div style="clear: both"></div>						
+						<?php					
+					}
+					?>				
+					<br/>
+					<button href="javascript:void(0);" onclick="return exportFile()" id="btn-select-column">Export</button>
+	</div>
+	
+	<div class="col-lg-12" style="margin-top: 10px;">    	     
+			<div class="title">	
+				<h2>TOTAL</h2>				
+			</div>
+			<table class="table-total">
+				<tr>
+					<td>
+						Media
+					</td>					
+					<td>
+						Total Rev
+					</td>
+					<td>
+						Total GP
+					</td>
+					<td>
+						Average GP%
+					</td>
+					<td>
+						Commission
+					</td>
+				</tr>
+			</table>						
+     </div>	
+     <div class="col-lg-12" style="margin-top: 10px;">    
+	     <!--
+	    <div class="title">	
+			<h2>DETAIL</h2>				
+		</div> 	     
+		-->
+		<div class="table-show">	
+							
+		</div>
+     </div>	
+     
+     
+</div>
+        
+

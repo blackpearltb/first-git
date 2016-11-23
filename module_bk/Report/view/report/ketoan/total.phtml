@@ -1,0 +1,69 @@
+<?php
+	
+$columns = array(
+	"dealsize" => "Dealsize","vat" => "VAT","remain" => "Remain","sale" => "Sale","stage" => "Stage","date_created" => "Date Created","cost_plan" => "Cost Plan","gp_plan" => "GP Plan","assigned_to" => "Media","channel" => "Channel","insource_or_outsource" => "Insource Or Outsource","total_days" => "Total Days","remain_days" => "Remain Days","total_kpi" => "Total KPI","achieved_kpi" => "Achieved KPI","remain_kpi" => "Remain KPI","lobby" => "Lobby","entertainment" => "Entertainment","actual_cost_vnd" => "Actual Cost VND","actual_profit" => "Actual Profit","collected_1" => "Collected 1","collected_date1" => "Collected Date 1","collected_2" => "Collected 2","collected_date2" => "Collected Date 2","collected_3" => "Collected 3","collected_date3" => "Collected Date 3","collected_4" => "Collected 4","collected_date4" => "Collected Date 4","invoice" => "Invoice","client" => "Clients"
+);
+$url_ajax = $this->url(MODULE_NAME, array('action'=>'total','controller'=>CONTROLLER_NAME));
+?>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Total</h1>
+    </div>               
+</div>
+         
+<div class="row">
+	<div class="col-lg-12">
+		<div class="header-choose-columns">	
+			<ul>
+			<?php
+				
+				foreach($columns as $key => $value)
+				{
+					?>
+					<li>
+					<label><input type="checkbox" class="column-streak" data-title = "<?php echo $value ?>" value="<?php echo $key ?>" />&nbsp;<?php echo $value ?></label>&nbsp;&nbsp;&nbsp;&nbsp;		
+					</li>
+					<?php					
+				}
+			?>
+			</ul>
+			<div style="clear: both"></div>		
+			<ul>
+				<li>
+			<button href="javascript:void(0);" onclick="return clickChangeColumns(this,'<?php echo $url_ajax ?>')" id="btn-select-column">Change Columns</button>
+				</li>
+				<li>
+			<button href="javascript:void(0);" onclick="return clickChooseAll()" id="btn-select-column">Choose All</button>
+				</li>
+				<li>
+			<button href="javascript:void(0);" onclick="return clickRemoveAll()" id="btn-select-column">Remove All</button>
+				</li>
+				<li>
+			<button href="javascript:void(0);" onclick="return exportFile()" id="btn-select-column">Export</button>	
+				</li>
+			</ul>
+			<div style="clear: both"></div>	
+		</div>	
+	</div>
+	
+     <div class="col-lg-12">    	     
+		<div class="table-show">					
+		</div>
+     </div>	
+		
+	<input type="hidden" id="input-dealsize" value="" />	
+	<input type="hidden" id="input-vat" value="" />
+	<input type="hidden" id="input-remain" value="" />
+	<input type="hidden" id="input-collected1" value="" />
+	<input type="hidden" id="input-collected2" value="" />
+	<input type="hidden" id="input-collected3" value="" />
+	<input type="hidden" id="input-collected4" value="" />
+	<input type="hidden" id="input-collected-date1" value="" />
+	<input type="hidden" id="input-collected-date2" value="" />
+	<input type="hidden" id="input-collected-date3" value="" />
+	<input type="hidden" id="input-collected-date4" value="" />
+	<input type="hidden" id="sortaction" value="" />
+</div>
+        
+

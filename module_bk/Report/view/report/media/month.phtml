@@ -1,0 +1,142 @@
+<?php
+$columns = array(
+	"invoice_value" => "invoice_value","invoice_vnd" => "invoice_vnd","dealsize" => "dealsize","vat" => "vat","total_rev"=>"total_rev","sale" => "Sale","stage" => "Stage","days_in_stage" => "Days in stage","date_created" => "Date Created","note" => "Note","cost_plan" => "Cost Plan","gp_plan" => "GP Plan","model" => "Model","type" => "Type","assigned_to" => "Media","channel" => "Channel","insource_or_outsource" => "Insource Or Outsource","total_days" => "Total Days","remain_days" => "Remain Days","total_kpi" => "Total KPI","achieved_kpi" => "Achieved KPI","remain_kpi" => "Remain KPI","sell_price_cpc_cpm_cpa_usd" => "Sell Price CPC CPM CPA USD","max_unit_cost_cpc_cpm_cpa_usd" => "Max Unit Cost CPC CPM CPA USD","actual_unit_cost_cpc_cpm_cpa_usd" => "Actual Unit Cost CPC CPM CPA USD","actual_sold_value_vnd" => "Actual Sold Value VND","lobby" => "Lobby","entertainment" => "Entertainment","actual_cost_usd" => "Actual Cost USD","actual_cost_vnd" => "Actual Cost VND","actual_profit" => "Actual Profit","actual_gp" => "Actual GP","kpi_per_day" => "KPI per Day","remain_kpi_per_day" => "Remain KPI per Day","start_date" => "Start Date","end_date" => "End Date","client" => "Clients","supplier" => "Suppliers"	
+);
+$url_ajax = $this->url(MODULE_NAME, array('action'=>'process-ajax-request','controller'=>CONTROLLER_NAME));
+
+
+$month_include_data = array();
+$array_year = array();
+$array_year1 = array();
+
+foreach($months as $data)
+{	
+			
+	$array_data = explode("-", $data['date']);
+	
+	$year = $array_data[0];
+	
+	if(!in_array($year, $array_year))
+	{		
+		$array_year[] = $year;			
+		
+	}
+			
+}
+foreach($array_year as $value)
+{
+	
+	foreach($months as $data)
+	{
+		$array_data = explode("-", $data['date']);
+		
+		$year = $array_data[0];
+		$month = $array_data[1];
+		
+		if($month > 0 && $month < 13)
+		{
+			
+			$temp_month_current =  $value."-".$month;
+			
+				if($year == $value)
+				{
+					
+					
+					if(!in_array($month, $month_include_data[$value]))
+					{	
+													
+						$month_include_data[$value][] = $month;		
+						sort($month_include_data[$value]);
+					}
+					
+					
+				}
+		}
+	}
+}
+?>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Report</h1>
+    </div>               
+</div>
+         
+<div class="row">
+	<div class="col-lg-12">
+		<div class="header-choose-columns">	
+			<ul>
+			<?php
+				
+				foreach($columns as $key => $value)
+				{
+					?>
+					<li>
+					<label><input type="checkbox" class="column-streak" data-title = "<?php echo $value ?>" value="<?php echo $key ?>" />&nbsp;<?php echo $value ?></label>&nbsp;&nbsp;&nbsp;&nbsp;		
+					</li>
+					<?php					
+				}
+			?>
+			</ul>
+			<div style="clear: both"></div>		
+			<ul>
+				<li>
+			<button href="javascript:void(0);" onclick="return clickChangeColumns(this,'<?php echo $url_ajax ?>')" id="btn-select-column">Change Columns</button>
+				</li>
+				<li>
+			<button href="javascript:void(0);" onclick="return clickChooseAll()" id="btn-select-column">Choose All</button>
+				</li>
+				<li>
+			<button href="javascript:void(0);" onclick="return clickRemoveAll()" id="btn-select-column">Remove All</button>
+				</li>
+				
+				<li>
+				<button href="javascript:void(0);" onclick="return exportFile()" id="btn-select-column">Export</button>	
+				</li>
+				
+			</ul>
+			<div style="clear: both"></div>	
+		</div>	
+	</div>
+	<div class="col-lg-12">
+		<!--<ul>-->
+					<?php													
+					foreach ($month_include_data as $key => $value)
+					{						
+						?>						
+						<span style="font-size: 20px;">Năm <?php echo $key ?></span>
+						<br/>
+							<ul class="ul-month">
+								<?php
+								
+								foreach ($value as $key2 => $value2)	
+								{
+									
+								?>
+								<li class="li-month" style="float:left;padding: 5px;">	
+									
+									<a class="a-filter-date" href="#" id="<?php echo $key."-".$value2 ?>">Tháng <?php echo $value2 ?></a>
+
+								</li>
+								<?php
+									
+								}	
+								?>
+							</ul>
+							<div style="clear: both"></div>						
+						<?php					
+					}
+					?>
+				<!--</ul>-->
+	</div>
+     <div class="col-lg-12">    	     
+		<div class="table-show">					
+		</div>
+     </div>	
+	 <input type="hidden" id="array_data" value="" />
+	<input type="hidden" id="array_clients" value="" />
+	<input type="hidden" id="array_suppliers" value="" />
+	<input type="hidden" id="sortaction" value="" />
+</div>
+        
+

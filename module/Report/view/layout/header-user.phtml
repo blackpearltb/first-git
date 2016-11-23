@@ -1,0 +1,5 @@
+<div class="user-login">
+				Chào, <?php echo $_SESSION['REPORTMEMBER']['fullname'] ?> &nbsp;&nbsp;&nbsp;
+				<a href="<?php echo $this->url('report/user', array('action'=>'change-password')) ?>">Change Password</a> &nbsp;&nbsp;&nbsp;
+				<a href="<?php echo $this->url('report/login', array('action'=>'logout')) ?>">Logout</a>
+			</div>

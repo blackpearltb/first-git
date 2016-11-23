@@ -1,0 +1,19 @@
+<!-- Scripts -->
+        <?php echo $this->headScript()	        	        
+            //->prependFile($this->basePath('bower_components/jquery/dist/jquery.min.js'))                                    
+            ->prependFile($this->basePath('bower_components/metisMenu/dist/metisMenu.min.js')) 
+            ->prependFile($this->basePath('dist/js/sb-admin-2.js'))
+            ->prependFile($this->basePath('js/autocomplete/jquery.autocomplete.js'))   
+            ->prependFile($this->basePath('js/autocomplete/jquery.mockjax.js'))
+            ->prependFile($this->basePath('js/update_customer_supplier.js')) 
+            ->prependFile($this->basePath('js/update_actual.js'))
+            ->prependFile($this->basePath('js/update_invoice.js'))           
+            ->prependFile($this->basePath('js/ketoan_month.js'))           
+            ->prependFile($this->basePath('js/x-editable.js'))                            
+            ->prependFile($this->basePath('js/jquery.dragtable.js'))  
+            ->prependFile($this->basePath('bower_components/bootstrap/dist/js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-ui.min.js'))
+            ->prependFile($this->basePath('js/jquery.min.js'))       
+                                                         
+        ; ?>
+        <?php echo $this->inlineScript() ?>
